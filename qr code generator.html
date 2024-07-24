@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>QR Kod Generator</title>
+    <style>
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Moderan font */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-color: #f4f4f4; /* Svetlo siva pozadina */
+    margin: 0;
+}
+
+h1 {
+    color: #333; /* Tamno siva boja teksta */
+    margin-bottom: 20px;
+}
+
+#textInput {
+    width: 350px;
+    height: 120px;
+    padding: 15px;
+    border: 1px solid #ddd; /* Svetlo siva ivica */
+    border-radius: 5px; /* Zaobljeni uglovi */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Suptilna senka */
+    resize: vertical; /* Dozvoljava promenu visine */
+    margin-bottom: 15px;
+}
+
+#generateBtn {
+    background-color: #007bff; /* Plava boja dugmeta */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Tranzicija boje pri lebdenju */
+}
+
+#generateBtn:hover {
+    background-color: #0056b3; /* Tamnija plava pri lebdenju */
+}
+
+#qrcode {
+    margin-top: 30px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+</style>
+</head>
+<body>
+    <h1>QR Kod Generator</h1>
+    <textarea id="textInput" placeholder="Unesite tekst ili URL"></textarea>
+    <button id="generateBtn">Generisi QR kod</button>
+    <div id="qrcode"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+    <script> 
+const qrcode = new QRCode(document.getElementById("qrcode"), {
+    width : 200,
+    height : 200
+});
+
+document.getElementById("generateBtn").addEventListener("click", () => {
+    const textInput = document.getElementById("textInput").value;
+    qrcode.makeCode(textInput);
+});
+
+
+
+</script>
+</body>
+</html>
